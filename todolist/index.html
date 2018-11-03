@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>To Do List PaulDuong</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="app.js"></script>
+</head>
+<body> 
+    <div class="container">
+        <h1>Quản Lý To Do</h1>
+        <section id="section-add">
+            <form>
+                <input type="text" name="todo" id="newToDo">
+                <button class="btn-submit" onclick="event.preventDefault(); onAddClick();">
+                    Add
+                </button>
+            </form>
+        </section>
+        <section id="section-list">
+            <ul id="todo-list">
+
+            </ul>
+        </section>
+    </div>
+
+</body>
+</html>
