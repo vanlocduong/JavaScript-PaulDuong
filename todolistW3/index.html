@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- <script src="app.js"></script> -->
+</head>
+
+<body>
+    <div id="myDIV" class="header">
+        <h2>My To Do List</h2>
+        <input type="text" id="myInput" placeholder="Title...">
+        <span onclick="newElement()" class="addBtn">Add</span>
+    </div>
+
+    <ul id="myUL">
+        <li>Hit the gym</li>
+        <li class="checked">Pay bills</li>
+        <li>Meet George</li>
+        <li>Buy eggs</li>
+        <li>Read a book</li>
+        <li>Organize office</li>
+    </ul>
+    <p id="demo"></p>
+    <script>
+        function newElement() {
+            var li = document.createElement("li");   // ta the li
+            var getText = document.getElementById("myInput").value; // lay gia tri text 
+            var giaTriTrongTheLI = document.createTextNode(getText);   // dua gia tri vao trong node
+            li.appendChild(giaTriTrongTheLI);  // noi li voi gia tri
+            if (getText === '') {  // rong thi in ra thong bao
+                alert(" you must write something ");
+            } else { // noi li vao trong ul
+                document.getElementById("myUL").appendChild(li);
+            }
+            document.getElementById("myInput").value = "";     // gan o nhap lai gia tri rong
+            var myNodelist = document.getElementsByTagName("li");  // tao them button xoa trong the li x
+            for (var i = 0; i < myNodelist.length; i++) { // duyet qua cac the li
+                var span = document.createElement("span");  // tao the span 
+                var noteForSpan = document.createTextNode("\u00D7"); // tao node cho the span 
+                span.className = "close";   // tao class "close" ( de co the tao css va vi tri cho no)
+                span.appendChild(noteForSpan);  // noi node vao span 
+                myNodelist[i].appendChild(span);  // noi vao moi phan tu i(li) la mot phan tu span va node
+            }
+            // click span x se an 
+            var close = document.getElementsByClassName("close"); // lay css cua phan tu li
+            for (var i = 0; i < close.length; i++) {
+                close[i].onclick = function () {   // click va se an di phan tu do di 
+                    var div = this.parentElement;
+                    div.style.display = "none";
+                }
+            }
+        }
+        // Add a "checked" symbol when clicking on a list item
+        var list = document.querySelector('ul');
+        list.addEventListener('click', function (ev) {
+            if (ev.target.tagName === 'LI') {
+                ev.target.classList.toggle('checked');
+            }
+        }, false);
+    </script>
+</body>
+
+</html>
